@@ -20,17 +20,18 @@
 #include "ESC.h"
 
 static const uint8_t LED_PIN = 13;
+static const uint8_t MOTOR_PIN = 25;
 
 static const uint8_t ACTIVE_STATE = LOW;
 
-ESC myESC (9, 1000, 2000, 500);   
+ESC esc(MOTOR_PIN, 1000, 2000, 500);   
 
 void setup()
 {
   pinMode(LED_PIN, OUTPUT);       
   digitalWrite(LED_PIN, ACTIVE_STATE);    
-  myESC.calib();                 
-  myESC.stop();                  
+  esc.calib();                 
+  esc.stop();                  
   digitalWrite(LED_PIN, !ACTIVE_STATE);    
 }
 
