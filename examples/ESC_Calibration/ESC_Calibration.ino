@@ -16,19 +16,24 @@
   http://www.arduino.cc/en/Tutorial/Knob
   http://people.interaction-ivrea.it/m.rinott
  */
+
 #include "ESC.h"
-#define LED_PIN (13)              // Pin for the LED 
 
-ESC myESC (9, 1000, 2000, 500);   // ESC_Name (ESC PIN, Minimum Value, Maximum Value, Arm Value)
+static const uint8_t LED_PIN = 13;
 
-void setup() {
-  pinMode(LED_PIN, OUTPUT);       // LED Visual Output (can be removed)
-  digitalWrite(LED_PIN, HIGH);    // LED High while signal is High (can be removed)
-  myESC.calib();                  // Calibration of the Max and Min value the ESC is expecting
-  myESC.stop();                   // Stop the ESC to avoid damage or injuries
-  digitalWrite(LED_PIN, LOW);     // LED Low when the calibration is done (can be removed)
+static const uint8_t ACTIVE_STATE = LOW;
+
+ESC myESC (9, 1000, 2000, 500);   
+
+void setup()
+{
+  pinMode(LED_PIN, OUTPUT);       
+  digitalWrite(LED_PIN, ACTIVE_STATE);    
+  myESC.calib();                 
+  myESC.stop();                  
+  digitalWrite(LED_PIN, !ACTIVE_STATE);    
 }
 
-void loop() {
-
+void loop()
+{
 }
