@@ -18,10 +18,12 @@
 #include "ESC.h"
 
 static const uint8_t LED_PIN = 13;
-
 static const uint8_t MOTOR_PIN = 25;
+static const uint16_t MIN_VAL = 1000;
+static const uint16_t MAX_VAL = 2000;
+static const uint16_t ARM_VAL = 500;
 
-ESC esc(MOTOR_PIN, 1000, 2000, 500);   
+ESC esc(MOTOR_PIN, MIN_VAL, MAX_VAL, ARM_VAL);   
 
 void setup()
 {
