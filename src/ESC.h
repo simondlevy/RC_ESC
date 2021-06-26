@@ -4,16 +4,15 @@
  *
 */
 
-#ifndef ESC_Library
-#define ESC_Library
+#pragma once
 
-#if (ARDUINO >= 100)
-	#include "Arduino.h"
+#include "Arduino.h"
+
+#ifdef ESP32
+#include <ESP32Servo.h>
 #else
-	#include "WProgram.h"
+#include <Servo.h>
 #endif
-
-#include <Servo.h>				// Including the Servo library
 
 class ESC
 {
@@ -28,7 +27,7 @@ class ESC
 		void setStopPulse(uint32_t stop_pulse);
 
 	private:
-	// < Local attributes >
+
 		// Hardware
 		byte oPin;			// ESC output Pin
 
@@ -41,7 +40,3 @@ class ESC
 		uint32_t stopPulse = 500;	// Stop pulse (microseconds)
 		Servo myESC;		// create servo object to control an ESC
 };
-
-#endif
-
-/* Electronic Speed Controller (ESC) - Library */
